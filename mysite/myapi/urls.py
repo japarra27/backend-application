@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from myapi.core import views
 from rest_framework.authtoken.views import obtain_auth_token
+from myapi.api import UserAPI
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/create-user/', UserAPI.as_view(), name = 'api_create_user'),
     path('hello/', views.HelloView.as_view(), name='hello'),
-    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
+    path('api/api-auth/', obtain_auth_token, name='api_token_auth'),
 ]
