@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     # Local Apps (Your project's apps)
     'myapi.core',
+    #'myapi.core.myapi',
     #'myapi.core.apps.CoreConfig'
 ]
 

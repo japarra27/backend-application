@@ -29,5 +29,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/create-user/', UserAPI.as_view(), name='api_create_user'),
     path('api/api-auth/', obtain_auth_token, name='api_token_auth'),
+    path('api/events/', views.EventList.as_view(), name = 'event_list'),
     path('', include(router.urls))
 ]

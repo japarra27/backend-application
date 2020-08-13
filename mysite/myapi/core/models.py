@@ -1,11 +1,14 @@
 from django.db import models
 from rest_framework import serializers
+from django.conf import settings
 
 # Create your models here.
 
 
 class CrearEvento(models.Model):
     id = serializers.ReadOnlyField()
+    event_user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     event_name = models.CharField('Nombre del evento', max_length=128)
     category = (("1", 'Conferencia'), ("2", 'Seminario'),
                 ("3", 'Congreso'), ("4", 'Curso'))
