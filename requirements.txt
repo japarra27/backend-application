@@ -1,12 +1,17 @@
-# to install the libraries use <pip install -r requirements.txt>
 asgiref==3.2.10
+autopep8==1.5.4
 certifi==2020.6.20
 chardet==3.0.4
 Django==3.1
 djangorestframework==3.11.1
+djangorestframework-simplejwt==4.4.0
 idna==2.10
+Pillow==7.2.0
+pycodestyle==2.6.0
 Pygments==2.6.1
+PyJWT==1.7.1
 pytz==2020.1
 requests==2.24.0
 sqlparse==0.3.1
+toml==0.10.1
 urllib3==1.25.10
