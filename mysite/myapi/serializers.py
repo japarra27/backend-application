@@ -25,3 +25,10 @@ class UserSerializer(serializers.Serializer):
             raise serializers.ValidationError("Este usuario ya existe, por favor ingresa uno nuevo.")
         else:
             return data
+
+    def validate_email(self, data):
+        emails = User.objects.filter(email = data)
+        if len(emails) != 0:
+            raise serializers.ValidationError("Este email ya existe, por favor ingresa uno nuevo.")
+        else:
+            return data
