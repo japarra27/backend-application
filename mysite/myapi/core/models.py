@@ -20,7 +20,7 @@ class CrearEvento(models.Model):
     event_final_date = models.DateTimeField("Fecha final del evento")
     category_event = (("1", 'Virtual'), ("2", 'Presencial'))
     event_type = models.CharField("Modalidad del evento",
-                                  max_length=10, choices=category_event, null=False, blank=False)
+                                  max_length=16, choices=category_event, null=False, blank=False)
     thumbnail = models.ImageField("Imagen",
                                   upload_to="recipe_thumbnails", default="recipe_thumbnails/default.png")
 

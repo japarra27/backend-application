@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from .core import models
 
 
+
 class UserSerializer(serializers.Serializer):
     id = serializers.ReadOnlyField()
     username = serializers.CharField()
@@ -42,5 +43,41 @@ class EventSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.CrearEvento
-        fields = ['id', 'event_name', 'event_category', 'event_place', 'event_address',
-                  'event_initial_date', 'event_final_date', 'event_type', 'thumbnail']
+        fields = '__all__'
+
+    def create(self, validate_data):
+        instance = models.CrearEvento()
+        instance.event_name = validate_data.get('event_name')
+        instance.event_category = validate_data.get('event_category')
+        instance.event_place = validate_data.get('event_place')
+        instance.event_address = validate_data.get('event_address')
+        instance.event_initial_date = validate_data.get('event_initial_date')
+        instance.event_final_date = validate_data.get('event_final_date')
+        instance.event_type = validate_data.get('event_type')
+        instance.thumbnail = validate_data.get('thumbnail')
+        instance.event_user = validate_data.get('event_user')
+        instance.save()
+
+        return instance
+
+    def update(self, instance, validate_data):
+        instance.event_name = validate_data.get(
+            'event_name', instance.event_name)
+        instance.event_category = validate_data.get(
+            'event_category', instance.event_category)
+        instance.event_place = validate_data.get(
+            'event_place', instance.event_place)
+        instance.event_address = validate_data.get(
+            'event_address', instance.event_address)
+        instance.event_initial_date = validate_data.get(
+            'event_initial_date', instance.event_initial_date)
+        instance.event_final_date = validate_data.get(
+            'event_final_date', instance.event_final_date)
+        instance.event_type = validate_data.get(
+            'event_type', instance.event_type)
+        instance.thumbnail = validate_data.get('thumbnail', instance.thumbnail)
+        instance.event_user = validate_data.get(
+            'event_user', instance.event_user)
+        instance.save()
+
+        return instance
