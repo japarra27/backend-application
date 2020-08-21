@@ -137,16 +137,17 @@ class Auth(FormView):
         return super(Auth, self).form_valid(form)
 
 
-class UserAPI2(APIView, TemplateView):
+class CreateUserName(APIView, TemplateView):
     template_name = "registro.html"
 
     def post(self, request):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+            return redirect('http://172.24.98.167:8080/')
+#            return Response(serializer.data, status=status.HTTP_201_CREATED)
+#        else:
+#            return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
 
 
 @csrf_exempt

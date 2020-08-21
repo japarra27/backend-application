@@ -27,7 +27,7 @@ router.register('api/events', views.CrearEventoViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/create-user/', views.UserAPI2.as_view(), name='api_create_user'),
+    path('api/create-user/', views.CreateUserName.as_view(), name='api_create_user'),
     path('api/api-auth/', obtain_auth_token, name='api_token_auth'),
     path('api/events/', views.ListEvents, name = 'event_list'),
     path('api/events/create/', views.EventCreate, name = 'create_event'),
