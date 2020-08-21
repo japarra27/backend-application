@@ -27,8 +27,8 @@ class CrearEvento(models.Model):
                                       max_length=16, choices=category, null=False, blank=False)
     event_place = models.CharField('Lugar del evento', max_length=128)
     event_address = models.CharField('Dirección del evento', max_length=128)
-    event_initial_date = models.DateTimeField("Fecha inicial del evento")
-    event_final_date = models.DateTimeField("Fecha final del evento")
+    event_initial_date = models.DateField("Fecha inicial del evento")
+    event_final_date = models.DateField("Fecha final del evento")
     category_event = (("Virtual", 'Virtual'), ("Presencial", 'Presencial'))
     event_type = models.CharField("Modalidad del evento",
                                   max_length=16, choices=category_event, null=False, blank=False)
