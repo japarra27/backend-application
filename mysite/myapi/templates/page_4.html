@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Eventos</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    </head>
+    <body>
+        {% if user.is_authenticated %}
+        <h1> ¡Hola! {{ user.first_name }} </h1>
+        <h2> Estos son tus eventos registrados: </h2>
+            <br>
+            {% for data in queryset %}
+            Nombre del Evento: {{data.event_name}}
+            <br>
+            Nombre del Usuario: {{data.event_user}}
+            <br>
+            Categoria del Evento: {{data.event_category}}
+            <br>
+            Id del evento: {{data.id}}
+            <br>
+            <a href="http://127.0.0.1:8000/api/events/delete/{{data.id}}">Eliminar</a>
+            <a href="http://127.0.0.1:8000/api/events/update/{{data.id}}">Modificar</a>
+            <br>
+            <br>
+            {% endfor %}
+
+            <form action="http://127.0.0.1:8000/api/events/create/">
+                <input type="submit" value="Registrar Nuevo Evento" />
+            </form>
+            
+        {% else %}
+        <h1> No esta autenticado </h1>
+        {% endif %}
+    </body>
+</html>

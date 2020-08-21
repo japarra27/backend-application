@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -26,6 +27,7 @@ SECRET_KEY = '6wk#b9clsqgl=o*rabz#6tgym9pzl=7vozno3-nw*bg8xbe*#v'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -44,8 +46,7 @@ INSTALLED_APPS = [
 
     # Local Apps (Your project's apps)
     'myapi.core',
-    #'myapi.core.myapi',
-    #'myapi.core.apps.CoreConfig'
+    'corsheaders'
 ]
 
 REST_FRAMEWORK = {
@@ -62,6 +63,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware'
 ]
 
 ROOT_URLCONF = 'myapi.urls'
@@ -69,7 +72,7 @@ ROOT_URLCONF = 'myapi.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'myapi/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

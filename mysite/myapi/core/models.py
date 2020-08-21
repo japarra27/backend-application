@@ -1,9 +1,20 @@
 from django.db import models
 from rest_framework import serializers
+from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 
 # Create your models here.
 
+
+class Usuario(User):
+    
+    class Meta:
+        proxy = True
+        ordering = ('first_name', )
+
+def __str__(self):
+    return self.first_name
 
 class CrearEvento(models.Model):
     id = serializers.ReadOnlyField()
