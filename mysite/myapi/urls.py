@@ -36,4 +36,5 @@ urlpatterns = [
     path('api/login/', views.Auth.as_view(), name='login'),
     path('api/events/delete/<int:evento_id>',views.DeleteEvent, name = 'delete_event'),
     path('api/events/update/<int:evento_id>',views.UpdateEvent, name = 'update_event'),
+    path('logout', views.logout),
 ]

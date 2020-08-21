@@ -27,6 +27,7 @@ from django.views.generic import TemplateView
 from django.views import View
 
 from .forms import EventForm, UserForm
+from django.contrib.auth import logout as do_logout
 
 # Create your views here.
 
@@ -167,3 +168,10 @@ def EventCreate(request):
         formularioIns = EventForm()
 
     return render(request, 'create_event.html', {'formulario':formularioIns})
+
+
+def logout(request):
+    # Finalizamos la sesión
+    do_logout(request)
+    # Redireccionamos a la portada
+    return redirect('/')
