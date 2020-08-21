@@ -1,5 +1,5 @@
 from .models import CrearEvento
-from myapi.serializers import EventSerializer
+from myapi.serializers import EventSerializer, UserSerializer
 from rest_framework import viewsets
 from myapi import serializers
 
